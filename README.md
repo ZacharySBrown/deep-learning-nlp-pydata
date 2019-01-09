@@ -1,4 +1,4 @@
-# deep_learning_modern_nlp
+# deep-learning-nlp
 Resources and notebook for ["Deep Learning and Modern NLP" Workshop](https://pydata.org/miami2019/schedule/presentation/19/) for PyData Miami 2019
 
 ## Environment Setup
