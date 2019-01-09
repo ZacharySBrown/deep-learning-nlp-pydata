@@ -2,7 +2,7 @@ from tqdm import tqdm
 import torch
 import numpy as np
 from torch.nn import Linear
-from torch.nn import Sigmoid
+from torch.nn import Sigmoid, LogSoftmax
 from torch.optim import SGD
 from torch.nn import BCELoss
 from sklearn.metrics import accuracy_score
@@ -18,6 +18,18 @@ class perceptron(torch.nn.Module):
         x = self.linear(x)
         x = self.sigmoid(x)
         return x
+
+class multi_class_perceptron(torch.nn.Module):
+    def __init__(self, input_shape, output_shape, bias=True):
+        super(multi_class_perceptron, self).__init__()
+        self.linear = Linear(input_shape, output_shape, bias=True)
+        self.softmax = LogSoftmax(dim=1)
+        
+        
+    def forward(self, x):
+        x = self.linear(x)
+        x = self.softmax(x)
+        return x        
     
 def train(model, train_data, optim, criterion, epochs=10, test_data=None):
 
